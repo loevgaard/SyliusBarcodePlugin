@@ -9,10 +9,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-final class AcmeSyliusExampleExtension extends Extension
+final class LoevgaardSyliusBarcodeExtension extends Extension
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     *
+     * @throws \Exception
      */
     public function load(array $config, ContainerBuilder $container): void
     {
