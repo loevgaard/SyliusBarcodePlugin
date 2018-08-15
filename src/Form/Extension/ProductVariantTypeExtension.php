@@ -8,6 +8,7 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductVariantTypeExtension extends AbstractTypeExtension
 {
@@ -23,9 +24,18 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $constraints = [];
+
+        if ($this->requireBarcode) {
+            $constraints[] = new NotBlank([
+                'groups' => ['sylius'],
+            ]);
+        }
+
         $builder->add('barcode', TextType::class, [
             'required' => $this->requireBarcode,
             'label' => 'loevgaard_sylius_barcode.form.product_variant.barcode',
+            'constraints' => $constraints,
         ]);
     }
 

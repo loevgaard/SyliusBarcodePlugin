@@ -1,14 +1,2 @@
 sylius:
     resource: "../../../../vendor/sylius/sylius/app/config/routing.yml"
-
-# Put your own routes here
-
-loevgaard_sylius_barcode_plugin_shop:
-    resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/shop_routing.yml"
-    prefix: /{_locale}
-    requirements:
-        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
-
-loevgaard_sylius_barcode_plugin_admin:
-    resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/admin_routing.yml"
-    prefix: /admin

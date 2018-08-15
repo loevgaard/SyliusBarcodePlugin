@@ -82,3 +82,6 @@ sylius_product:
         product_variant:
             classes:
                 model: Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity\ProductVariant
+
+loevgaard_sylius_barcode:
+    require_in_form: true
