@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Loevgaard\SyliusBrandPlugin\Form\Extension;
+namespace Loevgaard\SyliusBarcodePlugin\Form\Extension;
 
 use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType;
 use Symfony\Component\Form\AbstractTypeExtension;
@@ -11,10 +11,20 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class ProductVariantTypeExtension extends AbstractTypeExtension
 {
+    /**
+     * @var bool
+     */
+    private $requireBarcode;
+
+    public function __construct(bool $requireBarcode)
+    {
+        $this->requireBarcode = $requireBarcode;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('barcode', TextType::class, [
-            'required' => false,
+            'required' => $this->requireBarcode,
             'label' => 'loevgaard_sylius_barcode.form.product_variant.barcode',
         ]);
     }

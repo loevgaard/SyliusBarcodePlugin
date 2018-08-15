@@ -47,6 +47,12 @@ doctrine:
         driver: "pdo_sqlite"
         path: "%kernel.project_dir%/var/db.sql"
         charset: UTF8
+    orm:
+        mappings:
+            LoevgaardSyliusBarcodePlugin:
+                type: xml
+                dir: "%kernel.project_dir%/app/Resources/config/doctrine"
+                prefix: Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity
 
 fos_rest:
     exception: ~
@@ -70,3 +76,9 @@ liip_imagine:
             web_path:
                 web_root: "%kernel.project_dir%/web"
                 cache_prefix: "media/cache"
+
+sylius_product:
+    resources:
+        product_variant:
+            classes:
+                model: Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity\ProductVariant

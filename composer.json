@@ -1,7 +1,7 @@
 {
     "name": "loevgaard/sylius-barcode-plugin",
     "type": "sylius-plugin",
-    "description": "A barcode plugin for Sylius",
+    "description": "Add barcodes to your products using this plugin",
     "license": "MIT",
     "require": {
         "php": "^7.1",

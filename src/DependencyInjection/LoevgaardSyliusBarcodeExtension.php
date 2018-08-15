@@ -12,15 +12,16 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 final class LoevgaardSyliusBarcodeExtension extends Extension
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @throws \Exception
      */
     public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $container->setParameter('loevgaard.sylius_barcode.require_in_form', $config['require_in_form']);
 
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
     }
 }

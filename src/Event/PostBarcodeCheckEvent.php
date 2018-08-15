@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Loevgaard\SyliusBrandPlugin\Event;
+namespace Loevgaard\SyliusBarcodePlugin\Event;
 
 use Loevgaard\SyliusBarcodePlugin\Entity\BarcodeAwareInterface;
 use Symfony\Component\EventDispatcher\Event;
@@ -17,7 +17,7 @@ final class PostBarcodeCheckEvent extends Event
     private $subject;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $valid;
 

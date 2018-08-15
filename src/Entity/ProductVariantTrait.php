@@ -9,19 +9,24 @@ use DateTime;
 trait ProductVariantTrait
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $barcode;
 
     /**
      * The date where the barcode was checked
      *
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $barcodeChecked;
 
     /**
-     * @return string|null
+     * @var bool
+     */
+    protected $barcodeValid = false;
+
+    /**
+     * {@inheritdoc}
      */
     public function getBarcode(): ?string
     {
@@ -29,7 +34,7 @@ trait ProductVariantTrait
     }
 
     /**
-     * @param string|null $barcode
+     * {@inheritdoc}
      */
     public function setBarcode(?string $barcode): void
     {
@@ -37,7 +42,7 @@ trait ProductVariantTrait
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isBarcodeChecked(): bool
     {
@@ -45,7 +50,7 @@ trait ProductVariantTrait
     }
 
     /**
-     * @return DateTime|null
+     * {@inheritdoc}
      */
     public function getBarcodeChecked(): ?DateTime
     {
@@ -53,7 +58,7 @@ trait ProductVariantTrait
     }
 
     /**
-     * @param DateTime|null $barcodeChecked
+     * {@inheritdoc}
      */
     public function setBarcodeChecked(?DateTime $barcodeChecked): void
     {
@@ -61,10 +66,27 @@ trait ProductVariantTrait
     }
 
     /**
-     * Marks the barcode as checked
+     * @return bool
      */
-    public function markBarcodeAsChecked(): void
+    public function isBarcodeValid(): bool
+    {
+        return $this->barcodeValid;
+    }
+
+    /**
+     * @param bool $barcodeValid
+     */
+    public function setBarcodeValid(bool $barcodeValid): void
+    {
+        $this->barcodeValid = $barcodeValid;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function markBarcodeAsChecked(bool $valid): void
     {
         $this->barcodeChecked = new DateTime();
+        $this->barcodeValid = $valid;
     }
 }

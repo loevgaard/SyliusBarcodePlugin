@@ -34,7 +34,19 @@ interface BarcodeAwareInterface
     public function setBarcodeChecked(?DateTime $barcodeChecked): void;
 
     /**
-     * Marks the barcode as checked
+     * @return bool
      */
-    public function markBarcodeAsChecked(): void;
+    public function isBarcodeValid(): bool;
+
+    /**
+     * @param bool $barcodeValid
+     */
+    public function setBarcodeValid(bool $barcodeValid): void;
+
+    /**
+     * Marks the barcode as checked and sets the valid variable
+     *
+     * @param bool $valid
+     */
+    public function markBarcodeAsChecked(bool $valid): void;
 }

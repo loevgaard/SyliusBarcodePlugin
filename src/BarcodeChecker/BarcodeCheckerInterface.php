@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Loevgaard\SyliusBrandPlugin\BarcodeChecker;
-
+namespace Loevgaard\SyliusBarcodePlugin\BarcodeChecker;
 
 use Loevgaard\SyliusBarcodePlugin\Entity\BarcodeAwareInterface;
 
