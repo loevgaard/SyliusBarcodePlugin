@@ -1,0 +1,18 @@
+default:
+    suites:
+        managing_product_barcodes:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.transform.locale
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - sylius.behat.context.setup.shipping_category
+
+                - sylius.behat.context.ui.admin.managing_products
+                - sylius.behat.context.ui.admin.notification
+
+                - loevgaard_sylius_barcode.behat.context.ui.admin.managing_products
+            filters:
+                tags: "@managing_product_barcodes && @ui"
