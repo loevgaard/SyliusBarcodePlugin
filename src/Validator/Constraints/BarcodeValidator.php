@@ -17,7 +17,7 @@ class BarcodeValidator extends ConstraintValidator
     {
         // custom constraints should ignore null and empty values to allow
         // other constraints (NotBlank, NotNull, etc.) take care of that
-        if (null === $value || '' === $value) {
+        if ('' === $value || is_null($value)) {
             return;
         }
 

@@ -4,7 +4,7 @@ includes:
     - vendor/phpstan/phpstan-webmozart-assert/extension.neon
 
 parameters:
-    reportUnmatchedIgnoredErrors: false
+    reportUnmatchedIgnoredErrors: true
 
     symfony:
         container_xml_path: tests/Application/var/cache/test/appTestDebugProjectContainer.xml
@@ -19,3 +19,4 @@ parameters:
 
     ignoreErrors:
         - '/Parameter #1 $configuration of method Symfony\Component\DependencyInjection\Extension\Extension::processConfiguration() expects Symfony\Component\Config\Definition\ConfigurationInterface, Symfony\Component\Config\Definition\ConfigurationInterface|null given./'
+        - '/Access to an undefined property Symfony\\Component\\Validator\\Constraint::\$message./'
