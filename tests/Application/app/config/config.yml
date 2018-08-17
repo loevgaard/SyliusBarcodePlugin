@@ -84,4 +84,6 @@ sylius_product:
                 model: Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity\ProductVariant
 
 loevgaard_sylius_barcode:
-    require_in_form: true
+    form:
+        require: true
+        require_valid: true

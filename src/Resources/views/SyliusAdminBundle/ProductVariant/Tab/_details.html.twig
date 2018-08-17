@@ -8,6 +8,7 @@
         <div class="ui hidden divider"></div>
         <div class="ui segment">
             {{ form_row(form.code) }}
+            {{ form_row(form.barcode) }}
             <div class="two fields">
                 {{ form_row(form.shippingCategory) }}
             </div>
@@ -30,7 +31,6 @@
         <div class="ui hidden divider"></div>
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'sylius.ui.properties'|trans }}</h4>
-            {{ form_row(form.barcode) }}
             {{ form_row(form.height) }}
             {{ form_row(form.width) }}
             {{ form_row(form.depth) }}

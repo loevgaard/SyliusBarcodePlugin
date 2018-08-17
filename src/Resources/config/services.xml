@@ -15,7 +15,8 @@
         <service id="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface" alias="loevgaard.sylius_barcode.barcode_checker" />
 
         <service id="loevgaard.sylius_barcode.form.extension.product_variant" class="Loevgaard\SyliusBarcodePlugin\Form\Extension\ProductVariantTypeExtension">
-            <argument>%loevgaard.sylius_barcode.require_in_form%</argument>
+            <argument>%loevgaard.sylius_barcode.form.require%</argument>
+            <argument>%loevgaard.sylius_barcode.form.require_valid%</argument>
             <tag name="form.type_extension" extended-type="Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType" />
         </service>
     </services>

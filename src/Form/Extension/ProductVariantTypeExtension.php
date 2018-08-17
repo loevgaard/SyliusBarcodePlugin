@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Loevgaard\SyliusBarcodePlugin\Form\Extension;
 
+use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\Barcode;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,9 +18,15 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
      */
     private $requireBarcode;
 
-    public function __construct(bool $requireBarcode)
+    /**
+     * @var bool
+     */
+    private $requireValidBarcode;
+
+    public function __construct(bool $requireBarcode, bool $requireValidBarcode)
     {
         $this->requireBarcode = $requireBarcode;
+        $this->requireValidBarcode = $requireValidBarcode;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -28,6 +35,13 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
 
         if ($this->requireBarcode) {
             $constraints[] = new NotBlank([
+                'groups' => ['sylius'],
+            ]);
+        }
+
+        if ($this->requireValidBarcode) {
+            $constraints[] = new Barcode([
+                'message' => 'barcode.require_valid',
                 'groups' => ['sylius'],
             ]);
         }

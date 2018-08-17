@@ -18,9 +18,17 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('loevgaard_sylius_barcode');
         $rootNode
             ->children()
-                ->booleanNode('require_in_form')
-                    ->defaultFalse()
-                    ->info('If true the barcode field will be required in the product variant form')
+                ->arrayNode('form')
+                    ->children()
+                        ->booleanNode('require')
+                            ->defaultFalse()
+                            ->info('If true the barcode field will be required in the product forms (both product and variant)')
+                        ->end()
+                        ->booleanNode('require_valid')
+                            ->defaultFalse()
+                            ->info('If true the barcode field will be validated when entered in the product forms (both product and variant)')
+                        ->end()
+                    ->end()
                 ->end()
             ->end()
         ;

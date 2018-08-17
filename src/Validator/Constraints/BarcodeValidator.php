@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Loevgaard\SyliusBarcodePlugin\Validator\Constraints;
+
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintValidator;
+
+class BarcodeValidator extends ConstraintValidator
+{
+    /**
+     * @param string $value
+     * @param Constraint|Barcode $constraint
+     */
+    public function validate($value, Constraint $constraint)
+    {
+        // custom constraints should ignore null and empty values to allow
+        // other constraints (NotBlank, NotNull, etc.) take care of that
+        if (null === $value || '' === $value) {
+            return;
+        }
+
+        $validator = new \violuke\Barcodes\BarcodeValidator($value);
+        $valid = (bool) $validator->isValid();
+
+        if (!$valid) {
+            $this->context->buildViolation($constraint->message)
+                ->setParameter('{{ string }}', $value)
+                ->addViolation();
+        }
+    }
+}

@@ -52,7 +52,9 @@ final class AppKernel extends Kernel
 # app/config/config.yml
 
 loevgaard_sylius_barcode:
-    require_in_form: true # If true the barcode field will be required in the product variant form
+    form:
+        require: true # If true the barcode field will be required in the product forms
+        require_valid: true # If true the barcode must be valid when entered in the product forms
 
 ```
 
@@ -119,18 +121,45 @@ You need to override the template displaying the product and product variant for
 {# ... #}
 
 <div class="ui segment">
-    <h4 class="ui dividing header">{{ 'sylius.ui.properties'|trans }}</h4>
+    {{ form_row(form.code) }}
     {{ form_row(form.barcode) }} {# This is the part you should add #}
-    {{ form_row(form.height) }}
-    {{ form_row(form.width) }}
-    {{ form_row(form.depth) }}
-    {{ form_row(form.weight) }}
+    <div class="two fields">
+        {{ form_row(form.shippingCategory) }}
+    </div>
+    {{ form_row(form.channelPricings) }}
 </div>
 
 {# ... #}
 ```
 
-If you haven't overridden the template yet, you can just copy the template from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `app/Resources/SyliusAdminBundle/views/`
+```twig
+{# app/Resources/SyliusAdminBundle/views/Product/Tab/_details.html.twig #}
+
+<div class="ui segment">
+    {{ form_row(form.code) }}
+    {{ form_row(form.enabled) }}
+    {% if product.simple %}
+        {{ form_row(form.variant.barcode) }} {# This is the part you should add #}
+        {{ form_row(form.variant.onHand) }}
+        {{ form_row(form.variant.tracked) }}
+        {{ form_row(form.variant.shippingRequired) }}
+        {{ form_row(form.variant.version) }}
+    {% else %}
+        {{ form_row(form.options) }}
+        {{ form_row(form.variantSelectionMethod) }}
+    {% endif %}
+
+    {# Nothing to see here. #}
+    <div class="ui hidden element">
+        {% if product.simple %}
+            {{ form_row(form.variant.translations) }}
+        {% endif %}
+        {{ form_row(form.variantSelectionMethod) }}
+    </div>
+</div>
+```
+
+If you haven't overridden the template yet, you can just copy the templates from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `app/Resources/SyliusAdminBundle/views/`
 
 [ico-version]: https://img.shields.io/packagist/v/loevgaard/sylius-barcode-plugin.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
