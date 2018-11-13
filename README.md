@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![Quality Score][ico-code-quality]][link-code-quality]
 
-Add barcodes to your products
+Add barcodes to your products.
 
 ## Installation
 
@@ -67,7 +67,7 @@ In `src/AppBundle/Resources/config/doctrine/Product.orm.xml`:
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="AppBundle\Entity\ProductVariant" table="sylius_product_variant">
+    <mapped-superclass name="AppBundle\Model\ProductVariant" table="sylius_product_variant">
         <field name="barcode" column="barcode" type="string" nullable="true" />
         <field name="barcodeChecked" column="barcode_checked" type="datetime" nullable="true" />
         <field name="barcodeValid" column="barcode_valid" type="boolean" nullable="true" />
@@ -80,14 +80,14 @@ In `src/AppBundle/Resources/config/doctrine/Product.orm.xml`:
 
 ```php
 <?php
-// src/AppBundle/Entity/ProductVariant.php
+// src/AppBundle/Model/ProductVariant.php
 
 declare(strict_types=1);
 
-namespace AppBundle\Entity;
+namespace AppBundle\Model;
 
-use Loevgaard\SyliusBarcodePlugin\Entity\BarcodeAwareInterface;
-use Loevgaard\SyliusBarcodePlugin\Entity\ProductVariantTrait;
+use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
+use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
 class ProductVariant extends BaseProduct implements BarcodeAwareInterface
