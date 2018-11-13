@@ -27,6 +27,7 @@
         "phpstan/phpstan-symfony": "^0.10",
         "phpstan/phpstan-webmozart-assert": "^0.10",
         "phpunit/phpunit": "^6.5",
+        "roave/security-advisories": "dev-master",
         "sylius-labs/coding-standard": "^2.0"
     },
     "prefer-stable": true,
@@ -45,6 +46,7 @@
         }
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "sort-packages": true
     }
 }
