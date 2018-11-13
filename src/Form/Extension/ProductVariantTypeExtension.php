@@ -29,7 +29,7 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
         $this->requireValidBarcode = $requireValidBarcode;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $constraints = [];
 

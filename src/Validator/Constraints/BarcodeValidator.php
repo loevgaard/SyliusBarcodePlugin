@@ -13,11 +13,11 @@ class BarcodeValidator extends ConstraintValidator
      * @param string $value
      * @param Constraint|Barcode $constraint
      */
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         // custom constraints should ignore null and empty values to allow
         // other constraints (NotBlank, NotNull, etc.) take care of that
-        if ('' === $value || is_null($value)) {
+        if ('' === $value || null === $value) {
             return;
         }
 

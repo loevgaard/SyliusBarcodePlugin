@@ -9,7 +9,7 @@ use Symfony\Component\EventDispatcher\Event;
 
 final class PreBarcodeCheckEvent extends Event
 {
-    const NAME = 'loevgaard_sylius_barcode.pre_barcode_check';
+    public const NAME = 'loevgaard_sylius_barcode.pre_barcode_check';
 
     /**
      * @var BarcodeAwareInterface
