@@ -6,7 +6,7 @@ namespace Loevgaard\SyliusBarcodePlugin\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface;
-use Loevgaard\SyliusBarcodePlugin\Entity\BarcodeAwareInterface;
+use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Pagerfanta\Pagerfanta;
 use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

@@ -3,7 +3,7 @@
 namespace spec\Loevgaard\SyliusBarcodePlugin\BarcodeChecker;
 
 use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeChecker;
-use Loevgaard\SyliusBarcodePlugin\Entity\BarcodeAwareInterface;
+use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Event\PostBarcodeCheckEvent;
 use Loevgaard\SyliusBarcodePlugin\Event\PreBarcodeCheckEvent;
 use PhpSpec\ObjectBehavior;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Loevgaard\SyliusBarcodePlugin\Entity;
+namespace Loevgaard\SyliusBarcodePlugin\Model;
 
 use DateTime;
 

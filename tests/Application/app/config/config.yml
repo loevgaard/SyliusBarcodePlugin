@@ -52,7 +52,7 @@ doctrine:
             LoevgaardSyliusBarcodePlugin:
                 type: xml
                 dir: "%kernel.project_dir%/app/Resources/config/doctrine"
-                prefix: Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity
+                prefix: Tests\Loevgaard\SyliusBarcodePlugin\Application\Model
 
 fos_rest:
     exception: ~

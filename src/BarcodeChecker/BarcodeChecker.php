@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Loevgaard\SyliusBarcodePlugin\BarcodeChecker;
 
-use Loevgaard\SyliusBarcodePlugin\Entity\BarcodeAwareInterface;
+use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Event\PostBarcodeCheckEvent;
 use Loevgaard\SyliusBarcodePlugin\Event\PreBarcodeCheckEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
