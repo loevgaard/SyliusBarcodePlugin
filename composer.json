@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "sylius/sylius": "^1.2.3",
+        "sylius/sylius": "~1.2.3",
         "symfony/symfony": "^3.4|^4.1",
         "violuke/php-barcodes": "^1.0"
     },
