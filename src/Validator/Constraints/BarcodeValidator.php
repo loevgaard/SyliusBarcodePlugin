@@ -10,7 +10,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 class BarcodeValidator extends ConstraintValidator
 {
     /**
-     * @param string $value
+     * @param string|null $value
      * @param Constraint|Barcode $constraint
      */
     public function validate($value, Constraint $constraint): void
