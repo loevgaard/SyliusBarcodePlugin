@@ -6,6 +6,8 @@
             <argument type="service" id="sylius.manager.product_variant" />
             <argument type="service" id="sylius.repository.product_variant" />
             <argument type="service" id="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface" />
+
+            <tag name="console.command"/>
         </service>
 
         <service id="loevgaard.sylius_barcode.barcode_checker" class="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeChecker">
