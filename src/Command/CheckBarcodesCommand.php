@@ -9,16 +9,16 @@ use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Pagerfanta\Pagerfanta;
 use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CheckBarcodesCommand extends ContainerAwareCommand
+class CheckBarcodesCommand extends Command
 {
     /**
      * @var EntityManagerInterface
      */
-    private $entityManager;
+    private $productVariantManager;
 
     /**
      * @var ProductVariantRepositoryInterface
@@ -31,13 +31,13 @@ class CheckBarcodesCommand extends ContainerAwareCommand
     private $barcodeChecker;
 
     public function __construct(
-        EntityManagerInterface $entityManager,
+        EntityManagerInterface $productVariantManager,
         ProductVariantRepositoryInterface $productVariantRepository,
         BarcodeCheckerInterface $barcodeChecker
     ) {
         parent::__construct();
 
-        $this->entityManager = $entityManager;
+        $this->productVariantManager = $productVariantManager;
         $this->productVariantRepository = $productVariantRepository;
         $this->barcodeChecker = $barcodeChecker;
     }
@@ -61,7 +61,7 @@ class CheckBarcodesCommand extends ContainerAwareCommand
         $productVariants = $this->getProductVariants();
         foreach ($productVariants as $productVariant) {
             $this->barcodeChecker->check($productVariant);
-            $this->entityManager->flush();
+            $this->productVariantManager->flush();
         }
     }
 
@@ -78,9 +78,7 @@ class CheckBarcodesCommand extends ContainerAwareCommand
         for ($page = 1; $page < $pager->getNbPages(); ++$page) {
             $pager->setCurrentPage($page);
 
-            foreach ($pager->getCurrentPageResults() as $pageResult) {
-                yield $pageResult;
-            }
+            yield from $pager->getCurrentPageResults();
         }
     }
 }
