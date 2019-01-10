@@ -29,7 +29,7 @@ final class ManagingProductsContext implements Context
     /**
      * @When I set its barcode to :barcode
      */
-    public function iSetItsBarcodeTo($barcode): vod
+    public function iSetItsBarcodeTo($barcode): void
     {
         $this->createSimpleProductPage->setBarcode($barcode);
     }
