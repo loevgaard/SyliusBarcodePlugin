@@ -23,27 +23,20 @@ This command requires you to have Composer installed globally, as explained in t
 ### Step 2: Enable the plugin
 
 Then, enable the plugin by adding it to the list of registered plugins/bundles
-in the `app/AppKernel.php` file of your project:
+in the `config/bundles.php` file of your project:
 
 ```php
 <?php
-// app/AppKernel.php
+// config/bundles.php
 
-use Sylius\Bundle\CoreBundle\Application\Kernel;
-
-final class AppKernel extends Kernel
-{
-    public function registerBundles(): array
-    {
-        return array_merge(parent::registerBundles(), [
-            // ...
-            new \Loevgaard\SyliusBarcodePlugin\LoevgaardSyliusBarcodePlugin(),
-            // ...
-        ]);
-    }
+return [
+    // ...
+    
+    Loevgaard\SyliusBarcodePlugin\LoevgaardSyliusBarcodePlugin::class => ['all' => true],
     
     // ...
-}
+];
+
 ```
 
 ### Step 3: Configure the plugin
@@ -58,7 +51,7 @@ loevgaard_sylius_barcode:
 
 ```
 
-In `src/AppBundle/Resources/config/doctrine/Product.orm.xml`:
+In `config/doctrine/Product.orm.xml`:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -67,7 +60,7 @@ In `src/AppBundle/Resources/config/doctrine/Product.orm.xml`:
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="AppBundle\Model\ProductVariant" table="sylius_product_variant">
+    <mapped-superclass name="App\Model\ProductVariant" table="sylius_product_variant">
         <field name="barcode" column="barcode" type="string" nullable="true" />
         <field name="barcodeChecked" column="barcode_checked" type="datetime" nullable="true" />
         <field name="barcodeValid" column="barcode_valid" type="boolean" nullable="true" />
@@ -80,11 +73,11 @@ In `src/AppBundle/Resources/config/doctrine/Product.orm.xml`:
 
 ```php
 <?php
-// src/AppBundle/Model/ProductVariant.php
+// src/Model/ProductVariant.php
 
 declare(strict_types=1);
 
-namespace AppBundle\Model;
+namespace App\Model;
 
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantTrait;

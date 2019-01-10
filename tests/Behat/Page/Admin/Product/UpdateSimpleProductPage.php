@@ -11,7 +11,7 @@ class UpdateSimpleProductPage extends BaseUpdatePage
     /**
      * {@inheritdoc}
      */
-    protected function getDefinedElements()
+    protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
             'barcode' => '#sylius_product_variant_barcode',

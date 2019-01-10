@@ -1,0 +1,4 @@
+loevgaard_sylius_barcode:
+    form:
+        require: true
+        require_valid: true

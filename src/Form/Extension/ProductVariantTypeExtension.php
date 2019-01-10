@@ -53,8 +53,8 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    public function getExtendedType(): string
+    public static function getExtendedTypes(): iterable
     {
-        return ProductVariantType::class;
+        return [ProductVariantType::class];
     }
 }

@@ -12,7 +12,7 @@ class CreateSimpleProductPage extends BaseCreatePage
      * @param $barcode
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function setBarcode($barcode)
+    public function setBarcode($barcode): void
     {
         $this->getElement('barcode')->setValue($barcode);
     }
@@ -20,7 +20,7 @@ class CreateSimpleProductPage extends BaseCreatePage
     /**
      * {@inheritdoc}
      */
-    protected function getDefinedElements()
+    protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
             'barcode' => '#sylius_product_variant_barcode',
