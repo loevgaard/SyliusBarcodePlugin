@@ -154,6 +154,16 @@ You need to override the template displaying the product and product variant for
 
 If you haven't overridden the template yet, you can just copy the templates from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `app/Resources/SyliusAdminBundle/views/`
 
+## Usage
+
+Run the check command:
+
+```bash
+$ php bin/console loevgaard:barcode:check
+```
+
+This will mark all product variant as checked and updated the field `barcodeValid` to either true or false depending on the result of the check.
+
 [ico-version]: https://img.shields.io/packagist/v/loevgaard/sylius-barcode-plugin.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/loevgaard/SyliusBarcodePlugin/master.svg?style=flat-square
