@@ -16,6 +16,8 @@ doctrine:
     orm:
         mappings:
             App:
-                type: xml
-                dir: '%kernel.project_dir%/config/doctrine'
-                prefix: Tests\Loevgaard\SyliusBarcodePlugin\Application\src\Model
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/Entity'
+                prefix: 'Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity'
+                alias: App

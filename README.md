@@ -51,33 +51,15 @@ loevgaard_sylius_barcode:
 
 ```
 
-In `config/doctrine/Product.orm.xml`:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
-                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-
-    <mapped-superclass name="App\Model\ProductVariant" table="sylius_product_variant">
-        <field name="barcode" column="barcode" type="string" nullable="true" />
-        <field name="barcodeChecked" column="barcode_checked" type="datetime" nullable="true" />
-        <field name="barcodeValid" column="barcode_valid" type="boolean" nullable="true" />
-    </mapped-superclass>
-
-</doctrine-mapping>
-```
-
 ### Step 4: Import product variant trait
 
 ```php
 <?php
-// src/Model/ProductVariant.php
+// src/Entity/ProductVariant.php
 
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Entity;
 
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantTrait;
@@ -94,11 +76,6 @@ class ProductVariant extends BaseProduct implements BarcodeAwareInterface
 **NOTE:** If you haven't extended the `ProductVariant` entity yet, follow the [customization instructions](https://docs.sylius.com/en/1.2/customization/model.html) first because you need to add a bit more configuration.
 
 ### Step 5: Update your database schema
-```bash
-$ php bin/console doctrine:schema:update --force
-```
-
-or use [Doctrine Migrations](https://symfony.com/doc/master/bundles/DoctrineMigrationsBundle/index.html):
 
 ```bash
 $ php bin/console doctrine:migrations:diff

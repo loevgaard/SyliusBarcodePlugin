@@ -17,4 +17,4 @@ sylius_product:
     resources:
         product_variant:
             classes:
-                model: Tests\Loevgaard\SyliusBarcodePlugin\Application\src\Model\ProductVariant
+                model: Tests\Loevgaard\SyliusBarcodePlugin\Application\Entity\ProductVariant
