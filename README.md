@@ -42,7 +42,7 @@ return [
 ### Step 3: Configure the plugin
 
 ```yaml
-# app/config/config.yml
+# config/packages/loevgaard_sylius_barcode.yaml
 
 loevgaard_sylius_barcode:
     form:
