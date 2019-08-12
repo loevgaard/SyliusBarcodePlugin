@@ -40,8 +40,8 @@ class BarcodeCheckerSpec extends ObjectBehavior
 
     public function it_dispatches_events(EventDispatcherInterface $eventDispatcher, BarcodeAwareInterface $barcodeAware): void
     {
-        $eventDispatcher->dispatch(PreBarcodeCheckEvent::NAME, Argument::type(PreBarcodeCheckEvent::class))->shouldBeCalledOnce();
-        $eventDispatcher->dispatch(PostBarcodeCheckEvent::NAME, Argument::type(PostBarcodeCheckEvent::class))->shouldBeCalledOnce();
+        $eventDispatcher->dispatch(Argument::type(PreBarcodeCheckEvent::class), PreBarcodeCheckEvent::NAME)->shouldBeCalledOnce();
+        $eventDispatcher->dispatch(Argument::type(PostBarcodeCheckEvent::class), PostBarcodeCheckEvent::NAME)->shouldBeCalledOnce();
 
         $this->check($barcodeAware);
     }

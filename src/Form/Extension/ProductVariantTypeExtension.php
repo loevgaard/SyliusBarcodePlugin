@@ -13,14 +13,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductVariantTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $requireBarcode;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $requireValidBarcode;
 
     public function __construct(bool $requireBarcode, bool $requireValidBarcode)

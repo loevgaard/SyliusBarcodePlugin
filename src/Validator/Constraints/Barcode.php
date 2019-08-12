@@ -11,5 +11,6 @@ use Symfony\Component\Validator\Constraint;
  */
 class Barcode extends Constraint
 {
+    /** @var string */
     public $message = 'The string "{{ string }}" is not a valid barcode.';
 }

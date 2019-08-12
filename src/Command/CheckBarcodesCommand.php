@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Loevgaard\SyliusBarcodePlugin\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Generator;
 use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Pagerfanta\Pagerfanta;
@@ -15,19 +16,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CheckBarcodesCommand extends Command
 {
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $productVariantManager;
 
-    /**
-     * @var ProductVariantRepositoryInterface
-     */
+    /** @var ProductVariantRepositoryInterface */
     private $productVariantRepository;
 
-    /**
-     * @var BarcodeCheckerInterface
-     */
+    /** @var BarcodeCheckerInterface */
     private $barcodeChecker;
 
     public function __construct(
@@ -42,9 +37,6 @@ class CheckBarcodesCommand extends Command
         $this->barcodeChecker = $barcodeChecker;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -53,22 +45,21 @@ class CheckBarcodesCommand extends Command
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $productVariants = $this->getProductVariants();
         foreach ($productVariants as $productVariant) {
             $this->barcodeChecker->check($productVariant);
             $this->productVariantManager->flush();
         }
+
+        return 0;
     }
 
     /**
-     * @return BarcodeAwareInterface[]|\Generator
+     * @return BarcodeAwareInterface[]|Generator
      */
-    private function getProductVariants(): \Generator
+    private function getProductVariants(): Generator
     {
         /** @var Pagerfanta $pager */
         $pager = $this->productVariantRepository->createPaginator([

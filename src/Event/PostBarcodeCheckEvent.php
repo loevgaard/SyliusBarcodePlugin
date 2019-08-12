@@ -9,21 +9,16 @@ use Symfony\Component\EventDispatcher\Event;
 
 final class PostBarcodeCheckEvent extends Event
 {
+    /** @deprecated will be removed in v2 */
     public const NAME = 'loevgaard_sylius_barcode.post_barcode_check';
 
-    /**
-     * @var BarcodeAwareInterface
-     */
+    /** @var BarcodeAwareInterface */
     private $subject;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $valid;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $type;
 
     public function __construct(BarcodeAwareInterface $subject, bool $valid, string $type)
@@ -33,25 +28,16 @@ final class PostBarcodeCheckEvent extends Event
         $this->type = $type;
     }
 
-    /**
-     * @return BarcodeAwareInterface
-     */
     public function getSubject(): BarcodeAwareInterface
     {
         return $this->subject;
     }
 
-    /**
-     * @return bool
-     */
     public function isValid(): bool
     {
         return $this->valid;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
