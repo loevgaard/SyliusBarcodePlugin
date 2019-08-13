@@ -1,2 +1,2 @@
 barcode:
-    require_valid: The string "{{ string }}" is not a valid barcode.
+    require_valid: The barcode "{{ string }}" is not valid.
