@@ -5,36 +5,35 @@ declare(strict_types=1);
 namespace Loevgaard\SyliusBarcodePlugin\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Generator;
-use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface;
-use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
-use Pagerfanta\Pagerfanta;
-use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface;
+use Loevgaard\SyliusBarcodePlugin\Message\Command\ProcessBatch;
+use Setono\DoctrineORMBatcher\Batch\RangeBatchInterface;
+use Setono\DoctrineORMBatcher\Factory\BatcherFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 class CheckBarcodesCommand extends Command
 {
     /** @var EntityManagerInterface */
     private $productVariantManager;
 
-    /** @var ProductVariantRepositoryInterface */
-    private $productVariantRepository;
+    /** @var MessageBusInterface */
+    private $commandBus;
 
-    /** @var BarcodeCheckerInterface */
-    private $barcodeChecker;
+    /** @var string */
+    private $productVariantClass;
 
     public function __construct(
         EntityManagerInterface $productVariantManager,
-        ProductVariantRepositoryInterface $productVariantRepository,
-        BarcodeCheckerInterface $barcodeChecker
+        MessageBusInterface $commandBus,
+        string $productVariantClass
     ) {
         parent::__construct();
 
         $this->productVariantManager = $productVariantManager;
-        $this->productVariantRepository = $productVariantRepository;
-        $this->barcodeChecker = $barcodeChecker;
+        $this->commandBus = $commandBus;
+        $this->productVariantClass = $productVariantClass;
     }
 
     protected function configure(): void
@@ -47,29 +46,21 @@ class CheckBarcodesCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $productVariants = $this->getProductVariants();
-        foreach ($productVariants as $productVariant) {
-            $this->barcodeChecker->check($productVariant);
-            $this->productVariantManager->flush();
+        $qb = $this->productVariantManager->createQueryBuilder();
+        $qb->select('o')
+            ->from($this->productVariantClass, 'o')
+            ->andWhere('o.barcodeChecked is null')
+        ;
+
+        $factory = new BatcherFactory();
+        $bestChoiceIdBatcher = $factory->createBestIdRangeBatcher($qb);
+
+        /** @var RangeBatchInterface[] $batches */
+        $batches = $bestChoiceIdBatcher->getBatches(50);
+        foreach ($batches as $batch) {
+            $this->commandBus->dispatch(new ProcessBatch($batch));
         }
 
         return 0;
-    }
-
-    /**
-     * @return BarcodeAwareInterface[]|Generator
-     */
-    private function getProductVariants(): Generator
-    {
-        /** @var Pagerfanta $pager */
-        $pager = $this->productVariantRepository->createPaginator([
-            'barcodeChecked' => null,
-        ]);
-
-        for ($page = 1; $page < $pager->getNbPages(); ++$page) {
-            $pager->setCurrentPage($page);
-
-            yield from $pager->getCurrentPageResults();
-        }
     }
 }

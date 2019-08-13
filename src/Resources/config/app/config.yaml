@@ -1,0 +1,5 @@
+framework:
+    messenger:
+        buses:
+            loevgaard_sylius_barcode.command_bus: ~
+

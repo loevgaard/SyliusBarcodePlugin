@@ -4,8 +4,8 @@
     <services>
         <service id="loevgaard.sylius_barcode.command.check_barcodes" class="Loevgaard\SyliusBarcodePlugin\Command\CheckBarcodesCommand">
             <argument type="service" id="sylius.manager.product_variant" />
-            <argument type="service" id="sylius.repository.product_variant" />
-            <argument type="service" id="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface" />
+            <argument type="service" id="loevgaard_sylius_barcode.command_bus" />
+            <argument>%sylius.model.product_variant.class%</argument>
 
             <tag name="console.command"/>
         </service>
@@ -20,6 +20,12 @@
             <argument>%loevgaard.sylius_barcode.form.require%</argument>
             <argument>%loevgaard.sylius_barcode.form.require_valid%</argument>
             <tag name="form.type_extension" extended-type="Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType" />
+        </service>
+
+        <service id="loevgaard.sylius_barcode.message.handler.process_batch" class="Loevgaard\SyliusBarcodePlugin\Message\Handler\ProcessBatchHandler">
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="loevgaard.sylius_barcode.barcode_checker" />
+            <tag name="messenger.message_handler" />
         </service>
     </services>
 </container>

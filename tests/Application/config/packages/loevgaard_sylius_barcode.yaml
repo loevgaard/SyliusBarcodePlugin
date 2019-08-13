@@ -1,3 +1,6 @@
+imports:
+    - { resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/app/config.yaml" }
+
 loevgaard_sylius_barcode:
     form:
         require: true
