@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Loevgaard\SyliusBarcodePlugin\Model;
 
 use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ProductVariantTrait
@@ -21,7 +22,7 @@ trait ProductVariantTrait
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      */
     protected $barcodeChecked;
 
@@ -44,15 +45,15 @@ trait ProductVariantTrait
 
     public function isBarcodeChecked(): bool
     {
-        return $this->barcodeChecked instanceof DateTime;
+        return $this->barcodeChecked instanceof DateTimeInterface;
     }
 
-    public function getBarcodeChecked(): ?DateTime
+    public function getBarcodeChecked(): ?DateTimeInterface
     {
         return $this->barcodeChecked;
     }
 
-    public function setBarcodeChecked(?DateTime $barcodeChecked): void
+    public function setBarcodeChecked(?DateTimeInterface $barcodeChecked): void
     {
         $this->barcodeChecked = $barcodeChecked;
     }

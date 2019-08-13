@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Loevgaard\SyliusBarcodePlugin\Model;
 
-use DateTime;
+use DateTimeInterface;
 
 interface BarcodeAwareInterface
 {
@@ -14,9 +14,9 @@ interface BarcodeAwareInterface
 
     public function isBarcodeChecked(): bool;
 
-    public function getBarcodeChecked(): ?DateTime;
+    public function getBarcodeChecked(): ?DateTimeInterface;
 
-    public function setBarcodeChecked(?DateTime $barcodeChecked): void;
+    public function setBarcodeChecked(?DateTimeInterface $barcodeChecked): void;
 
     public function isBarcodeValid(): bool;
 
