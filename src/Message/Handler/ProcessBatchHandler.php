@@ -32,7 +32,7 @@ final class ProcessBatchHandler implements MessageHandlerInterface
     /**
      * @throws StringsException
      */
-    public function __invoke(ProcessBatch $message)
+    public function __invoke(ProcessBatch $message): void
     {
         $queryRebuilder = new QueryRebuilder($this->managerRegistry);
 
