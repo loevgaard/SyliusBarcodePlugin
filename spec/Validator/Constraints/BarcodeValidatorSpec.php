@@ -6,19 +6,25 @@ use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\Barcode;
 use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\BarcodeValidator;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
 
 class BarcodeValidatorSpec extends ObjectBehavior
 {
+    public function let(ExecutionContextInterface $executionContext): void
+    {
+        $this->initialize($executionContext);
+    }
+
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(BarcodeValidator::class);
     }
 
-    public function let(ExecutionContextInterface $executionContext): void
+    public function it_extends_constraint(): void
     {
-        $this->initialize($executionContext);
+        $this->beAnInstanceOf(Constraint::class);
     }
 
     public function it_validates(ExecutionContextInterface $executionContext): void
