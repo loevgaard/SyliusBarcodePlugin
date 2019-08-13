@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\Loevgaard\SyliusBarcodePlugin\Model;
 
 use DateTimeInterface;
@@ -11,7 +13,7 @@ class ProductVariantTraitSpec extends ObjectBehavior
 {
     public function let(): void
     {
-        $class = new class implements BarcodeAwareInterface {
+        $class = new class() implements BarcodeAwareInterface {
             use ProductVariantTrait;
         };
 

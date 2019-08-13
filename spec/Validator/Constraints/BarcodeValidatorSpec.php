@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\Loevgaard\SyliusBarcodePlugin\Validator\Constraints;
 
 use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\Barcode;

@@ -69,8 +69,8 @@
     "prefer-stable": true,
     "scripts": {
         "analyse": "./vendor/bin/phpstan analyse -c phpstan.neon -l max src/",
-        "check-style": "./vendor/bin/ecs check src",
-        "fix-style": "./vendor/bin/ecs check src --fix",
+        "check-style": "./vendor/bin/ecs check src/ spec/",
+        "fix-style": "./vendor/bin/ecs check src/ spec/ --fix",
         "test": "./vendor/bin/phpspec run"
     }
 }

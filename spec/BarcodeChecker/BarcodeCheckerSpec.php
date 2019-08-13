@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\Loevgaard\SyliusBarcodePlugin\BarcodeChecker;
 
 use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeChecker;
-use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Event\PostBarcodeCheckEvent;
 use Loevgaard\SyliusBarcodePlugin\Event\PreBarcodeCheckEvent;
+use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
