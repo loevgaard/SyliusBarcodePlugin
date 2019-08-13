@@ -32,7 +32,7 @@ final class AddIndicesSubscriber implements EventSubscriber
         $tableConfig = ['indexes' => []];
 
         foreach ($requiredColumns as $requiredColumn) {
-            if(!in_array($requiredColumn, $actualColumns, true)) {
+            if (!in_array($requiredColumn, $actualColumns, true)) {
                 return;
             }
 
