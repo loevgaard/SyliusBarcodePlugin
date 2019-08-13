@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait ProductVariantTrait
 {
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", name="barcode", nullable=true, unique=true)
      *
      * @var string|null
      */
@@ -20,14 +20,14 @@ trait ProductVariantTrait
     /**
      * The date where the barcode was checked
      *
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", name="barcode_checked", nullable=true)
      *
      * @var DateTimeInterface|null
      */
     protected $barcodeChecked;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", name="barcode_valid", nullable=true)
      *
      * @var bool
      */
