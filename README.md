@@ -43,7 +43,10 @@ return [
 
 ```yaml
 # config/packages/loevgaard_sylius_barcode.yaml
-
+imports:
+    # ...
+    - { resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/app/config.yaml"
+        
 loevgaard_sylius_barcode:
     form:
         require: true # If true the barcode field will be required in the product forms
@@ -130,6 +133,21 @@ You need to override the template displaying the product and product variant for
 ```
 
 If you haven't overridden the template yet, you can just copy the templates from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `app/Resources/SyliusAdminBundle/views/`
+
+### Step 7: Using asynchronous transport (optional, but recommended)
+
+All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
+Therefore you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
+
+```yaml
+# config/packages/messenger.yaml
+framework:
+    messenger:
+        routing:
+            # Route all command messages to the async transport
+            # This presumes that you have already set up an 'async' transport
+            'Loevgaard\SyliusBarcodePlugin\Message\Command\CommandInterface': async
+```
 
 ## Usage
 
