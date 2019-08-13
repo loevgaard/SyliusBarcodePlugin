@@ -19,10 +19,20 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
     /** @var bool */
     private $requireValidBarcode;
 
-    public function __construct(bool $requireBarcode, bool $requireValidBarcode)
+    /** @var array */
+    private $validationGroups;
+
+    public function __construct(bool $requireBarcode, bool $requireValidBarcode, array $validationGroups = [])
     {
         $this->requireBarcode = $requireBarcode;
         $this->requireValidBarcode = $requireValidBarcode;
+
+        // todo in v2 of this plugin remove this check and remove the default value of $validationGroups
+        if (count($validationGroups) === 0) {
+            $validationGroups[] = 'sylius';
+        }
+
+        $this->validationGroups = $validationGroups;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -31,14 +41,14 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
 
         if ($this->requireBarcode) {
             $constraints[] = new NotBlank([
-                'groups' => ['sylius'],
+                'groups' => $this->validationGroups,
             ]);
         }
 
         if ($this->requireValidBarcode) {
             $constraints[] = new Barcode([
                 'message' => 'barcode.require_valid',
-                'groups' => ['sylius'],
+                'groups' => $this->validationGroups,
             ]);
         }
 
