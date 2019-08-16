@@ -45,7 +45,7 @@ return [
 # config/packages/loevgaard_sylius_barcode.yaml
 imports:
     # ...
-    - { resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/app/config.yaml"
+    - { resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/app/config.yaml" }
         
 loevgaard_sylius_barcode:
     form:
