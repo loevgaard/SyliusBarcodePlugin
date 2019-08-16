@@ -68,6 +68,10 @@ use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="sylius_product_variant")
+ */
 class ProductVariant extends BaseProduct implements BarcodeAwareInterface
 {
     use ProductVariantTrait;
@@ -76,7 +80,16 @@ class ProductVariant extends BaseProduct implements BarcodeAwareInterface
 }
 ```
 
-**NOTE:** If you haven't extended the `ProductVariant` entity yet, follow the [customization instructions](https://docs.sylius.com/en/1.2/customization/model.html) first because you need to add a bit more configuration.
+**NOTE:** If you haven't extended the `ProductVariant` entity yet, follow the [customization instructions](https://docs.sylius.com/en/1.2/customization/model.html) first because you need to add a bit more configuration:
+
+```
+# config/packages/_sylius.yaml
+sylius_product:
+    resources:
+        product_variant:
+            classes:
+                model: App\Entity\ProductVariant
+```
 
 ### Step 5: Update your database schema
 
