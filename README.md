@@ -66,13 +66,13 @@ namespace App\Entity;
 
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantTrait;
-use Sylius\Component\Core\Model\Product as BaseProduct;
+use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="sylius_product_variant")
  */
-class ProductVariant extends BaseProduct implements BarcodeAwareInterface
+class ProductVariant extends BaseProductVariant implements BarcodeAwareInterface
 {
     use ProductVariantTrait;
     
