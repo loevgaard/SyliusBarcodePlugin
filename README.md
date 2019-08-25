@@ -102,7 +102,7 @@ $ php bin/console doctrine:migrations:migrate
 You need to override the template displaying the product and product variant form and add a `form_row` statement with the barcode:
 
 ```twig
-{# app/Resources/SyliusAdminBundle/views/ProductVariant/Tab/_details.html.twig #}
+{# templates/bundles/SyliusAdminBundle/ProductVariant/Tab/_details.html.twig #}
 
 {# ... #}
 
@@ -119,7 +119,7 @@ You need to override the template displaying the product and product variant for
 ```
 
 ```twig
-{# app/Resources/SyliusAdminBundle/views/Product/Tab/_details.html.twig #}
+{# templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig #}
 
 <div class="ui segment">
     {{ form_row(form.code) }}
@@ -145,7 +145,7 @@ You need to override the template displaying the product and product variant for
 </div>
 ```
 
-If you haven't overridden the template yet, you can just copy the templates from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `app/Resources/SyliusAdminBundle/views/`
+If you haven't overridden the template yet, you can just copy the templates from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `templates/bundles/SyliusAdminBundle/`
 
 ### Step 7: Using asynchronous transport (optional, but recommended)
 
