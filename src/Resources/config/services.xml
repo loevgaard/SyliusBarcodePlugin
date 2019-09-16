@@ -9,6 +9,7 @@
                  class="Loevgaard\SyliusBarcodePlugin\Command\CheckBarcodesCommand">
             <argument type="service" id="sylius.manager.product_variant"/>
             <argument type="service" id="loevgaard_sylius_barcode.command_bus"/>
+            <argument type="service" id="setono_doctrine_orm_batcher.factory.batcher"/>
             <argument>%sylius.model.product_variant.class%</argument>
 
             <tag name="console.command"/>
