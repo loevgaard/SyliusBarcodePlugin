@@ -1,36 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="loevgaard.sylius_barcode.command.check_barcodes" class="Loevgaard\SyliusBarcodePlugin\Command\CheckBarcodesCommand">
-            <argument type="service" id="sylius.manager.product_variant" />
-            <argument type="service" id="loevgaard_sylius_barcode.command_bus" />
+
+        <service id="loevgaard.sylius_barcode.command.check_barcodes"
+                 class="Loevgaard\SyliusBarcodePlugin\Command\CheckBarcodesCommand">
+            <argument type="service" id="sylius.manager.product_variant"/>
+            <argument type="service" id="loevgaard_sylius_barcode.command_bus"/>
             <argument>%sylius.model.product_variant.class%</argument>
 
             <tag name="console.command"/>
         </service>
 
-        <service id="loevgaard.sylius_barcode.barcode_checker" class="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeChecker">
-            <argument type="service" id="event_dispatcher" />
+        <service id="loevgaard.sylius_barcode.barcode_checker"
+                 class="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeChecker">
+            <argument type="service" id="event_dispatcher"/>
         </service>
 
-        <service id="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface" alias="loevgaard.sylius_barcode.barcode_checker" />
+        <service id="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface"
+                 alias="loevgaard.sylius_barcode.barcode_checker"/>
 
-        <service id="loevgaard.sylius_barcode.form.extension.product_variant" class="Loevgaard\SyliusBarcodePlugin\Form\Extension\ProductVariantTypeExtension">
+        <service id="loevgaard.sylius_barcode.form.extension.product_variant"
+                 class="Loevgaard\SyliusBarcodePlugin\Form\Extension\ProductVariantTypeExtension">
             <argument>%loevgaard.sylius_barcode.form.require%</argument>
             <argument>%loevgaard.sylius_barcode.form.require_valid%</argument>
             <argument>%sylius.form.type.product_variant.validation_groups%</argument>
-            <tag name="form.type_extension" extended-type="Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType" />
+
+            <tag name="form.type_extension"
+                 extended-type="Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType"/>
         </service>
 
-        <service id="loevgaard.sylius_barcode.message.handler.process_batch" class="Loevgaard\SyliusBarcodePlugin\Message\Handler\ProcessBatchHandler">
-            <argument type="service" id="doctrine" />
-            <argument type="service" id="loevgaard.sylius_barcode.barcode_checker" />
-            <tag name="messenger.message_handler" />
+        <service id="loevgaard.sylius_barcode.message.handler.process_batch"
+                 class="Loevgaard\SyliusBarcodePlugin\Message\Handler\ProcessBatchHandler">
+            <argument type="service" id="doctrine"/>
+            <argument type="service" id="loevgaard.sylius_barcode.barcode_checker"/>
+
+            <tag name="messenger.message_handler"/>
         </service>
 
         <service id="Loevgaard\SyliusBarcodePlugin\EventListener\AddIndicesSubscriber">
             <tag name="doctrine.event_subscriber"/>
         </service>
+
     </services>
 </container>
