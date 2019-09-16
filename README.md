@@ -31,13 +31,13 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    
+    Setono\DoctrineORMBatcherBundle\SetonoDoctrineORMBatcherBundle::class => ['all' => true],
     Loevgaard\SyliusBarcodePlugin\LoevgaardSyliusBarcodePlugin::class => ['all' => true],
-    
     // ...
 ];
-
 ```
+
+Note that adding `SetonoDoctrineORMBatcherBundle` also required.
 
 ### Step 3: Configure the plugin
 
