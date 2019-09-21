@@ -1,12 +1,14 @@
 @managing_product_barcodes
-Feature: Adding a new product with a barcode
-  In order to extend my merchandise
+Feature: Adding a new product with duplicated barcode
+  In order to prevent barcode duplicates
   As an Administrator
-  I want to add a new product to the shop with a given barcode
+  I want to see validation error when trying to add product with non-unique barcode
 
   Background:
     Given the store operates on a single channel in "United States"
     And the store has "Standard" shipping category
+    And the store has a product "Stabilo Point 88-57 Azure"
+    And this product has barcode "4006381333931"
     And I am logged in as an administrator
 
   @ui
@@ -17,6 +19,5 @@ Feature: Adding a new product with a barcode
     And I set its slug to "dice-brewing" in "English (United States)"
     And I set its price to "$10.00" for "United States" channel
     And I set its barcode to "4006381333931"
-    And I add it
-    Then I should be notified that it has been successfully created
-    And the product "Dice Brewing" should appear in the store
+    And I try to add it
+    Then I should be notified that product with this barcode already exists

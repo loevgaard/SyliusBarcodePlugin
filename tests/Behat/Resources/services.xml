@@ -6,6 +6,12 @@
     <services>
         <defaults public="true" />
 
+        <service id="loevgaard_sylius_barcode.behat.context.setup.product"
+                 class="Tests\Loevgaard\SyliusBarcodePlugin\Behat\Context\Setup\ProductContext">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="sylius.product_variant_resolver.default" />
+        </service>
+
         <service id="loevgaard_sylius_barcode.behat.context.ui.admin.managing_products"
                  class="Tests\Loevgaard\SyliusBarcodePlugin\Behat\Context\Ui\Admin\ManagingProductsContext">
             <argument type="service" id="loevgaard_sylius_barcode.behat.page.admin.product.create_simple" />

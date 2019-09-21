@@ -7,6 +7,7 @@ namespace Tests\Loevgaard\SyliusBarcodePlugin\Behat\Context\Ui\Admin;
 use Behat\Behat\Context\Context;
 use Tests\Loevgaard\SyliusBarcodePlugin\Behat\Page\Admin\Product\CreateSimpleProductPage;
 use Tests\Loevgaard\SyliusBarcodePlugin\Behat\Page\Admin\Product\UpdateSimpleProductPage;
+use Webmozart\Assert\Assert;
 
 final class ManagingProductsContext implements Context
 {
@@ -32,5 +33,16 @@ final class ManagingProductsContext implements Context
     public function iSetItsBarcodeTo($barcode): void
     {
         $this->createSimpleProductPage->setBarcode($barcode);
+    }
+
+    /**
+     * @Then I should be notified that product with this barcode already exists
+     */
+    public function iShouldBeNotifiedThatBarcodeAlreadyExists()
+    {
+        Assert::same(
+            $this->createSimpleProductPage->getValidationMessage('barcode'),
+            'Variant barcode must be unique.'
+        );
     }
 }
