@@ -3,3 +3,4 @@ loevgaard_sylius_barcode:
         barcode:
             not_blank: Please enter barcode.
             valid: The string "{{ string }}" is not a valid barcode.
+            unique: Variant barcode must be unique.

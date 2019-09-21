@@ -147,7 +147,29 @@ You need to override the template displaying the product and product variant for
 
 If you haven't overridden the template yet, you can just copy the templates from `vendor/loevgaard/sylius-barcode-plugin/src/Resources/views/SyliusAdminBundle` to `templates/bundles/SyliusAdminBundle/`
 
-### Step 7: Using asynchronous transport (optional, but recommended)
+### Step 7: Add validator constraint 
+
+Create `config/validator/ProductVariant.xml`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
+    <class name="App\Entity\ProductVariant">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">barcode</option>
+            <option name="message">loevgaard_sylius_barcode.product_variant.barcode.unique</option>
+            <option name="groups">sylius</option>
+        </constraint>
+    </class>
+</constraint-mapping>
+```
+
+Like it [configured](tests/Application/config/validator/ProductVariant.xml) at example application.
+
+### Step 8: Using asynchronous transport (optional, but recommended)
 
 All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
 Therefore you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
