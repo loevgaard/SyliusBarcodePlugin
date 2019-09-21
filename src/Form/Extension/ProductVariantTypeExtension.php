@@ -41,13 +41,14 @@ class ProductVariantTypeExtension extends AbstractTypeExtension
 
         if ($this->requireBarcode) {
             $constraints[] = new NotBlank([
+                'message' => 'loevgaard_sylius_barcode.product_variant.barcode.not_blank',
                 'groups' => $this->validationGroups,
             ]);
         }
 
         if ($this->requireValidBarcode) {
             $constraints[] = new Barcode([
-                'message' => 'barcode.require_valid',
+                'message' => 'loevgaard_sylius_barcode.product_variant.barcode.valid',
                 'groups' => $this->validationGroups,
             ]);
         }
