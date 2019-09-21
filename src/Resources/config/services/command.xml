@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="loevgaard_sylius_barcode.command.check_barcodes"
+                 class="Loevgaard\SyliusBarcodePlugin\Command\CheckBarcodesCommand">
+            <argument type="service" id="sylius.manager.product_variant"/>
+            <argument type="service" id="loevgaard_sylius_barcode.command_bus"/>
+            <argument type="service" id="setono_doctrine_orm_batcher.factory.batcher"/>
+            <argument>%sylius.model.product_variant.class%</argument>
+
+            <tag name="console.command"/>
+        </service>
+
+    </services>
+</container>

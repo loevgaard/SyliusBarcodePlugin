@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="loevgaard_sylius_barcode.form.extension.product_variant"
+                 class="Loevgaard\SyliusBarcodePlugin\Form\Extension\ProductVariantTypeExtension">
+            <argument>%loevgaard_sylius_barcode.form.require%</argument>
+            <argument>%loevgaard_sylius_barcode.form.require_valid%</argument>
+            <argument>%sylius.form.type.product_variant.validation_groups%</argument>
+
+            <tag name="form.type_extension"
+                 extended-type="Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType"/>
+        </service>
+
+    </services>
+</container>
