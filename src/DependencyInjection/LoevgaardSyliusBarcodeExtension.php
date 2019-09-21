@@ -20,8 +20,8 @@ final class LoevgaardSyliusBarcodeExtension extends Extension
     public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
-        $container->setParameter('loevgaard.sylius_barcode.form.require', $config['form']['require']);
-        $container->setParameter('loevgaard.sylius_barcode.form.require_valid', $config['form']['require_valid']);
+        $container->setParameter('loevgaard_sylius_barcode.form.require', $config['form']['require']);
+        $container->setParameter('loevgaard_sylius_barcode.form.require_valid', $config['form']['require_valid']);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
