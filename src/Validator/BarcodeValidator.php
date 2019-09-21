@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Loevgaard\SyliusBarcodePlugin\Validator\Constraints;
+namespace Loevgaard\SyliusBarcodePlugin\Validator;
 
 use InvalidArgumentException;
+use Loevgaard\SyliusBarcodePlugin\Validator\Constraint\Barcode;
 use Safe\Exceptions\StringsException;
 use function Safe\sprintf;
 use Symfony\Component\Validator\Constraint;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Loevgaard\SyliusBarcodePlugin\Validator\Constraints;
+namespace Loevgaard\SyliusBarcodePlugin\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Loevgaard\SyliusBarcodePlugin\Validator\Constraints;
+namespace spec\Loevgaard\SyliusBarcodePlugin\Validator;
 
-use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\Barcode;
-use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\BarcodeValidator;
+use Loevgaard\SyliusBarcodePlugin\Validator\BarcodeValidator;
+use Loevgaard\SyliusBarcodePlugin\Validator\Constraint\Barcode;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Validator\Constraint;

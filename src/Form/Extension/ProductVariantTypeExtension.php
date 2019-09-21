@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Loevgaard\SyliusBarcodePlugin\Form\Extension;
 
-use Loevgaard\SyliusBarcodePlugin\Validator\Constraints\Barcode;
+use Loevgaard\SyliusBarcodePlugin\Validator\Constraint\Barcode;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
