@@ -37,5 +37,7 @@ class BarcodeValidator extends ConstraintValidator
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }
+
+        unset($validator);
     }
 }
