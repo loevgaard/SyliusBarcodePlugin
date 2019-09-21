@@ -23,6 +23,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('form')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('require')
                             ->defaultFalse()
