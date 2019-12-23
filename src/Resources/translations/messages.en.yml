@@ -2,3 +2,6 @@ loevgaard_sylius_barcode:
     form:
         product_variant:
             barcode: Barcode
+            
+    ui:
+        invalid_barcodes: Invalid barcodes

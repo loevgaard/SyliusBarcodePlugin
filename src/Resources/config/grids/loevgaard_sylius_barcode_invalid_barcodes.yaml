@@ -1,0 +1,14 @@
+sylius_grid:
+    grids:
+        loevgaard_sylius_barcode_admin_invalid_barcodes:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius.model.product_variant.class%"
+            sorting:
+                id: desc
+            fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                    sortable: ~

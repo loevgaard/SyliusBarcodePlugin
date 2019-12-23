@@ -1,0 +1,3 @@
+loevgaard_sylius_barcode_admin:
+    resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/routing/admin.yaml"
+    prefix: /admin

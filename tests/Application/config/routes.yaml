@@ -1,0 +1,2 @@
+loevgaard_sylius_barcode:
+    resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/routing.yaml"

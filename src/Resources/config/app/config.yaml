@@ -1,3 +1,6 @@
+imports:
+    - "@LoevgaardSyliusBarcodePlugin/Resources/config/grids/loevgaard_sylius_barcode_invalid_barcodes.yaml"
+
 framework:
     messenger:
         buses:

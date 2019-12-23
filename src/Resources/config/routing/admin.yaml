@@ -1,0 +1,12 @@
+loevgaard_sylius_barcode_admin_invalid_barcodes:
+    path: /variants/invalid-barcodes
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product_variant:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@SyliusAdmin/Crud/index.html.twig"
+            grid: loevgaard_sylius_barcode_admin_invalid_barcodes
+            criteria:
+                barcodeValid: true
