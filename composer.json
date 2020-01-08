@@ -101,10 +101,7 @@
             "(cd tests/Application && bin/console sylius:fixtures:load --no-interaction -e ${SYMFONY_ENV:-'dev'})"
         ],
         "phpspec": "vendor/bin/phpspec run",
-        "phpunit": [
-            "SYMFONY_ENV=test composer ensure-database-ready",
-            "vendor/bin/phpunit"
-        ],
+        "phpunit": "vendor/bin/phpunit",
         "run": [
             "@ensure-env-copied",
             "(cd tests/Application && bin/console server:run -d public -e ${SYMFONY_ENV:-'dev'})"
