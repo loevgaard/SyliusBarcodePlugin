@@ -14,9 +14,6 @@ use violuke\Barcodes\BarcodeValidator as ActualBarcodeValidator;
 
 class BarcodeValidator extends ConstraintValidator
 {
-    /**
-     * @throws StringsException
-     */
     public function validate($value, Constraint $constraint): void
     {
         // custom constraints should ignore null and empty values to allow
