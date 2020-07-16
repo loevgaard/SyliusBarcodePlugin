@@ -20,6 +20,8 @@ jobs:
                     echo "::set-env name=DATABASE_URL::mysql://root:root@127.0.0.1/sylius?serverVersion=5.7"
             -   name: Checkout
                 uses: actions/checkout@v1
+            -   name: Run mysql server
+                run: sudo /etc/init.d/mysql start
             -   name: Setup PHP, with composer and extensions
                 uses: shivammathur/setup-php@master
                 with:

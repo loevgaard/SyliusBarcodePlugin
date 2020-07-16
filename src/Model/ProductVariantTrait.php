@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait ProductVariantTrait
 {
     /**
-     * @ORM\Column(type="string", name="barcode", nullable=true, unique=true)
+     * @ORM\Column(type="string", name="barcode", nullable=true)
      *
      * @var string|null
      */

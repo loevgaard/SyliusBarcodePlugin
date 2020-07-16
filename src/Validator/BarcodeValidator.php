@@ -6,7 +6,6 @@ namespace Loevgaard\SyliusBarcodePlugin\Validator;
 
 use InvalidArgumentException;
 use Loevgaard\SyliusBarcodePlugin\Validator\Constraint\Barcode;
-use Safe\Exceptions\StringsException;
 use function Safe\sprintf;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -14,9 +13,6 @@ use violuke\Barcodes\BarcodeValidator as ActualBarcodeValidator;
 
 class BarcodeValidator extends ConstraintValidator
 {
-    /**
-     * @throws StringsException
-     */
     public function validate($value, Constraint $constraint): void
     {
         // custom constraints should ignore null and empty values to allow
