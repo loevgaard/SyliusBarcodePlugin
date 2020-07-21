@@ -13,5 +13,5 @@ parameters:
         - 'src/DependencyInjection/Configuration.php'
 
     ignoreErrors:
-        - '/Parameter #1 $configuration of method Symfony\Component\DependencyInjection\Extension\Extension::processConfiguration() expects Symfony\Component\Config\Definition\ConfigurationInterface, Symfony\Component\Config\Definition\ConfigurationInterface|null given./'
+        - '/Parameter #1 \$configuration of method .+processConfiguration\(\) expects .+ConfigurationInterface, .+ConfigurationInterface\|null given\./'
         - '/Method Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface\:\:dispatch\(\) invoked with 2 parameters, 1 required\./'
