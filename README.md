@@ -71,11 +71,7 @@ use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="sylius_product_variant",
- *    uniqueConstraints={
- *        @ORM\UniqueConstraint(name="loevgaard_barcode_unique", columns={"barcode", "version"})
- *    }
- * )
+ * @ORM\Table(name="sylius_product_variant")
  */
 class ProductVariant extends BaseProductVariant implements LoevgaardSyliusBarcodePluginProductVariantInterface
 {
