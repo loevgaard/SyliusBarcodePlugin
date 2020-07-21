@@ -13,9 +13,5 @@
         <service id="Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface"
                  alias="loevgaard_sylius_barcode.barcode_checker"/>
 
-        <service id="Loevgaard\SyliusBarcodePlugin\EventListener\AddIndicesSubscriber">
-            <tag name="doctrine.event_subscriber"/>
-        </service>
-
     </services>
 </container>
