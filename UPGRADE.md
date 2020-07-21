@@ -1,13 +1,3 @@
-# Upgrade from 1.4 to 1.5
-
-1. Generate and run database migration
-
-```bash
-php bin/console doctrine:migrations:diff
-php bin/console doctrine:migrations:migrate
-```
-
-More context - at https://github.com/loevgaard/SyliusBarcodePlugin/pull/12/files
  
 # Upgrade from 1.2 to 1.3
 
