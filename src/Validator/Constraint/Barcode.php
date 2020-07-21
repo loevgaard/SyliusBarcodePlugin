@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraint;
 class Barcode extends Constraint
 {
     /** @var string */
-    public $message = 'The string "{{ string }}" is not a valid barcode.';
+    public $message = 'loevgaard_sylius_barcode.product_variant.barcode.valid';
 
     public function validatedBy(): string
     {
