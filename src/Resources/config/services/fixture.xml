@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="loevgaard_sylius_barcode.fixture.example_factory.product"
+                 class="Loevgaard\SyliusBarcodePlugin\Fixture\Factory\ProductExampleFactory"
+                 parent="sylius.fixture.example_factory.product">
+        </service>
+
+        <service id="loevgaard_sylius_barcode.fixture.product"
+                 class="Loevgaard\SyliusBarcodePlugin\Fixture\ProductFixture"
+                 parent="sylius.fixture.product">
+            <argument index="1" type="service" id="loevgaard_sylius_barcode.fixture.example_factory.product" />
+
+            <tag name="sylius_fixtures.fixture" />
+        </service>
+
+    </services>
+</container>
