@@ -1,5 +1,6 @@
 imports:
     - { resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/app/config.yaml" }
+    - { resource: "@LoevgaardSyliusBarcodePlugin/Resources/config/app/fixtures.yaml" }
 
 loevgaard_sylius_barcode:
     form:
