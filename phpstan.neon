@@ -1,17 +1,12 @@
 includes:
-    - vendor/phpstan/phpstan-doctrine/extension.neon
-    - vendor/phpstan/phpstan-webmozart-assert/extension.neon
-    - vendor/phpstan/phpstan-strict-rules/rules.neon
-    - vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
+	- phpstan-baseline.neon
 
 parameters:
-    reportUnmatchedIgnoredErrors: true
     checkMissingIterableValueType: false
 
-    excludes_analyse:
-        # Makes PHPStan crash
-        - 'src/DependencyInjection/Configuration.php'
+    level: max
 
-    ignoreErrors:
-        - '/Parameter #1 \$configuration of method .+processConfiguration\(\) expects .+ConfigurationInterface, .+ConfigurationInterface\|null given\./'
-        - '/Method Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface\:\:dispatch\(\) invoked with 2 parameters, 1 required\./'
+    paths:
+        - src/
+
+    reportUnmatchedIgnoredErrors: true
