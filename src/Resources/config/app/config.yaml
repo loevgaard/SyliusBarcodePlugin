@@ -3,3 +3,17 @@ framework:
         buses:
             loevgaard_sylius_barcode.command_bus: ~
 
+sylius_grid:
+    grids:
+        sylius_admin_product_variant:
+            fields:
+                code:
+                    position: 1
+                barcode:
+                    type: string
+                    label: loevgaard_sylius_barcode.ui.barcode
+                    position: 2
+            filters:
+                barcode:
+                    type: string
+                    label: loevgaard_sylius_barcode.ui.barcode

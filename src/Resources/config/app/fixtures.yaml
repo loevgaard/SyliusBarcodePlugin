@@ -1,0 +1,23 @@
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+
+                cap_product_with_barcode:
+                    name: loevgaard_sylius_barcode_product
+                    options:
+                        custom:
+                            -   name: 'Knitted burgundy winter cap with barcode'
+                                tax_category: 'other'
+                                channels:
+                                    - 'FASHION_WEB'
+                                main_taxon: 'caps_with_pompons'
+                                taxons:
+                                    - 'caps'
+                                    - 'caps_with_pompons'
+                                product_attributes:
+                                    cap_brand: 'You are breathtaking'
+                                    cap_collection: 'Sylius Winter 2019'
+                                    cap_material: '100% wool'
+                                images:
+                                    - { path: '@SyliusCoreBundle/Resources/fixtures/caps/cap_01.jpg', type: 'main' }
