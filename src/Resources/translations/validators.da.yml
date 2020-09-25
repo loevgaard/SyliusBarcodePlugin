@@ -1,0 +1,6 @@
+loevgaard_sylius_barcode:
+    product_variant:
+        barcode:
+            not_blank: Venligst indtast stregkode.
+            valid: Stregkoden "{{ string }}" er ikke gyldig.
+            unique: produktvariantens stregkode skal være unik.

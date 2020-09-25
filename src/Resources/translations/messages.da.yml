@@ -1,0 +1,6 @@
+loevgaard_sylius_barcode:
+    form:
+        product_variant:
+            barcode: Stregkode
+    ui:
+        barcode: Stregkode
