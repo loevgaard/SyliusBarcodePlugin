@@ -11,9 +11,9 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 final class LoevgaardSyliusBarcodeExtension extends Extension
 {
-    public function load(array $config, ContainerBuilder $container): void
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
+        $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
         $container->setParameter('loevgaard_sylius_barcode.form.require', $config['form']['require']);
         $container->setParameter('loevgaard_sylius_barcode.form.require_valid', $config['form']['require_valid']);
         $container->setParameter('loevgaard_sylius_barcode.form.require_unique', $config['form']['require_unique']);
