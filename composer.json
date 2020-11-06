@@ -29,7 +29,7 @@
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-webmozart-assert": "^0.12",
-        "phpunit/phpunit": "^8.3",
+        "phpunit/phpunit": "^9.4",
         "roave/security-advisories": "dev-master",
         "sensiolabs/security-checker": "^5.0",
         "sylius-labs/coding-standard": "^3.1",
