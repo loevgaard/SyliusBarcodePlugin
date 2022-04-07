@@ -10,6 +10,7 @@ class CreateSimpleProductPage extends BaseCreatePage
 {
     /**
      * @param $barcode
+     *
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
     public function setBarcode($barcode): void
@@ -18,7 +19,7 @@ class CreateSimpleProductPage extends BaseCreatePage
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getDefinedElements(): array
     {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Loevgaard\SyliusBarcodePlugin\Event;
 
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 final class PostBarcodeCheckEvent extends Event
 {

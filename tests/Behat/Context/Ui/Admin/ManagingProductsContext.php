@@ -11,14 +11,10 @@ use Webmozart\Assert\Assert;
 
 final class ManagingProductsContext implements Context
 {
-    /**
-     * @var CreateSimpleProductPage
-     */
+    /** @var CreateSimpleProductPage */
     private $createSimpleProductPage;
 
-    /**
-     * @var UpdateSimpleProductPage
-     */
+    /** @var UpdateSimpleProductPage */
     private $updateSimpleProductPage;
 
     public function __construct(CreateSimpleProductPage $createSimpleProductPage, UpdateSimpleProductPage $updateSimpleProductPage)

@@ -13,15 +13,12 @@ use violuke\Barcodes\BarcodeValidator;
 
 final class BarcodeChecker implements BarcodeCheckerInterface
 {
-    /** @var EventDispatcherInterface */
+    /** @var LegacyEventDispatcherProxy */
     private $eventDispatcher;
 
     public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        /** @var EventDispatcherInterface $eventDispatcher */
-        $eventDispatcher = LegacyEventDispatcherProxy::decorate($eventDispatcher);
-
-        $this->eventDispatcher = $eventDispatcher;
+        $this->eventDispatcher = LegacyEventDispatcherProxy::decorate($eventDispatcher);
     }
 
     public function check(BarcodeAwareInterface $barcodeAware): void

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Loevgaard\SyliusBarcodePlugin\Fixture\Factory;
 
+use Faker\Factory;
 use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantInterface as LoevgaardBarcodeProductVariantInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
@@ -16,14 +17,14 @@ trait ProductExampleFactoryTrait
         static $faker;
 
         if (null === $faker) {
-            $faker = \Faker\Factory::create();
+            $faker = Factory::create();
         }
 
         /** @var ProductVariantInterface|LoevgaardBarcodeProductVariantInterface $variant */
         foreach ($product->getVariants() as $variant) {
             Assert::isInstanceOf($variant, LoevgaardBarcodeProductVariantInterface::class);
 
-            $variant->setBarcode($faker->ean13);
+            $variant->setBarcode($faker->ean13());
         }
     }
 }

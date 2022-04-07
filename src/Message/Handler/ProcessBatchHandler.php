@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Loevgaard\SyliusBarcodePlugin\Message\Handler;
 
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use InvalidArgumentException;
 use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface;
 use Loevgaard\SyliusBarcodePlugin\Message\Command\ProcessBatch;

@@ -23,7 +23,7 @@ final class AddIndicesSubscriberTest extends TestCase
         $events = $subscriber->getSubscribedEvents();
 
         $this->assertSame([
-            Events::loadClassMetadata
+            Events::loadClassMetadata,
         ], $events);
     }
 
@@ -48,7 +48,7 @@ final class AddIndicesSubscriberTest extends TestCase
      */
     public function it_adds_indices(): void
     {
-        $class = new class implements BarcodeAwareInterface {
+        $class = new class() implements BarcodeAwareInterface {
             use ProductVariantTrait;
         };
         $metadata = $this->getMockBuilder(ClassMetadata::class)->disableOriginalConstructor()->getMock();
@@ -66,12 +66,12 @@ final class AddIndicesSubscriberTest extends TestCase
         $this->assertSame([
             'indexes' => [
                 [
-                    'columns' => ['barcode_checked']
+                    'columns' => ['barcode_checked'],
                 ],
                 [
-                    'columns' => ['barcode_valid']
-                ]
-            ]
+                    'columns' => ['barcode_valid'],
+                ],
+            ],
         ], $metadata->table);
     }
 }

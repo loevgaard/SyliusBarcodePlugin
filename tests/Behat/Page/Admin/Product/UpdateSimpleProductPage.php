@@ -9,7 +9,7 @@ use Sylius\Behat\Page\Admin\Product\UpdateSimpleProductPage as BaseUpdatePage;
 class UpdateSimpleProductPage extends BaseUpdatePage
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getDefinedElements(): array
     {
