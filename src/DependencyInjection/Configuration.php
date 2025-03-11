@@ -14,6 +14,7 @@ final class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder('loevgaard_sylius_barcode');
         $rootNode = $treeBuilder->getRootNode();
 
+        /** @psalm-suppress UndefinedInterfaceMethod,PossiblyNullReference */
         $rootNode
             ->children()
                 ->arrayNode('form')
@@ -30,10 +31,6 @@ final class Configuration implements ConfigurationInterface
                         ->booleanNode('require_unique')
                             ->defaultTrue()
                             ->info('If true the barcode unique constraint will be added to the field')
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
         ;
 
         return $treeBuilder;

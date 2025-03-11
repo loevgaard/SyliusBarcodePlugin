@@ -7,18 +7,13 @@ namespace Loevgaard\SyliusBarcodePlugin\BarcodeChecker;
 use Loevgaard\SyliusBarcodePlugin\Event\PostBarcodeCheckEvent;
 use Loevgaard\SyliusBarcodePlugin\Event\PreBarcodeCheckEvent;
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
-use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use violuke\Barcodes\BarcodeValidator;
 
 final class BarcodeChecker implements BarcodeCheckerInterface
 {
-    /** @var LegacyEventDispatcherProxy */
-    private $eventDispatcher;
-
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    public function __construct(private readonly EventDispatcherInterface $eventDispatcher)
     {
-        $this->eventDispatcher = LegacyEventDispatcherProxy::decorate($eventDispatcher);
     }
 
     public function check(BarcodeAwareInterface $barcodeAware): void
@@ -26,10 +21,10 @@ final class BarcodeChecker implements BarcodeCheckerInterface
         $this->eventDispatcher->dispatch(new PreBarcodeCheckEvent($barcodeAware), PreBarcodeCheckEvent::NAME);
 
         $validator = new BarcodeValidator($barcodeAware->getBarcode());
-        $valid = (bool) $validator->isValid();
+        $valid = $validator->isValid();
 
         $barcodeAware->markBarcodeAsChecked($valid);
 
-        $this->eventDispatcher->dispatch(new PostBarcodeCheckEvent($barcodeAware, $valid, (string) $validator->getType()), PostBarcodeCheckEvent::NAME);
+        $this->eventDispatcher->dispatch(new PostBarcodeCheckEvent($barcodeAware, $valid, $validator->getType()), PostBarcodeCheckEvent::NAME);
     }
 }

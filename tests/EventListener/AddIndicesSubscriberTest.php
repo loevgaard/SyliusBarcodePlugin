@@ -11,9 +11,12 @@ use Loevgaard\SyliusBarcodePlugin\EventListener\AddIndicesSubscriber;
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 use Loevgaard\SyliusBarcodePlugin\Model\ProductVariantTrait;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 final class AddIndicesSubscriberTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @test
      */

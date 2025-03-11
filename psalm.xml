@@ -1,18 +1,36 @@
 <?xml version="1.0"?>
 <psalm
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    errorLevel="4"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    phpVersion="8.1"
+    errorLevel="2"
+    findUnusedBaselineEntry="false"
+    findUnusedPsalmSuppress="false"
+    findUnusedCode="false"
+    findUnusedVariablesAndParams="false"
 >
     <projectFiles>
         <directory name="src"/>
+        <!-- todo readd -->
+        <!--<directory name="tests"/>-->
         <ignoreFiles>
+            <directory name="tests/Application"/>
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+    </plugins>
     <forbiddenFunctions>
         <function name="dd"/>
         <function name="dump"/>
+        <function name="exit"/>
+        <function name="var_dump"/>
+        <function name="print_r"/>
     </forbiddenFunctions>
+    <issueHandlers>
+        <DeprecatedConstant errorLevel="suppress"/>
+    </issueHandlers>
 </psalm>

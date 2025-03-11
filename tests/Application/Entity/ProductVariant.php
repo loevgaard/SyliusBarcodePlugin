@@ -11,6 +11,7 @@ use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
 
 /**
  * @ORM\Entity
+ *
  * @ORM\Table(name="sylius_product_variant")
  */
 class ProductVariant extends BaseProductVariant implements LoevgaardSyliusBarcodePluginProductVariantInterface

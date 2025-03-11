@@ -9,8 +9,6 @@ use Sylius\Behat\Page\Admin\Product\CreateSimpleProductPage as BaseCreatePage;
 class CreateSimpleProductPage extends BaseCreatePage
 {
     /**
-     * @param $barcode
-     *
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
     public function setBarcode($barcode): void

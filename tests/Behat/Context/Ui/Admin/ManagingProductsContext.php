@@ -38,7 +38,7 @@ final class ManagingProductsContext implements Context
     {
         Assert::same(
             $this->createSimpleProductPage->getValidationMessage('barcode'),
-            'Variant barcode must be unique.'
+            'Variant barcode must be unique.',
         );
     }
 }

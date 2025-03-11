@@ -22,7 +22,7 @@ final class AddIndicesSubscriber implements EventSubscriber
     {
         $metadata = $event->getClassMetadata();
 
-        if (!is_subclass_of($metadata->name, BarcodeAwareInterface::class, true)) {
+        if (!is_subclass_of($metadata->name, BarcodeAwareInterface::class)) {
             return;
         }
 
@@ -41,6 +41,7 @@ final class AddIndicesSubscriber implements EventSubscriber
             ];
         }
 
+        /** @psalm-suppress PropertyTypeCoercion */
         $metadata->table = array_merge_recursive($tableConfig, $metadata->table);
     }
 }

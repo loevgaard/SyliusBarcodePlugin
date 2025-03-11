@@ -11,8 +11,7 @@ use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
 
 final class AddBarcodeUniqueSubscriber implements EventSubscriber
 {
-    /** @var bool */
-    private $uniqueEnabled;
+    private bool $uniqueEnabled;
 
     public function __construct(bool $uniqueEnabled)
     {
@@ -38,6 +37,7 @@ final class AddBarcodeUniqueSubscriber implements EventSubscriber
             return;
         }
 
+        /** @psalm-suppress InvalidPropertyAssignmentValue */
         $metadata->fieldMappings['barcode']['unique'] = true;
     }
 }

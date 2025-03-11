@@ -10,8 +10,6 @@ use InvalidArgumentException;
 use Loevgaard\SyliusBarcodePlugin\BarcodeChecker\BarcodeCheckerInterface;
 use Loevgaard\SyliusBarcodePlugin\Message\Command\ProcessBatch;
 use Loevgaard\SyliusBarcodePlugin\Model\BarcodeAwareInterface;
-use Safe\Exceptions\StringsException;
-use function Safe\sprintf;
 use Setono\DoctrineORMBatcher\Query\QueryRebuilder;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
@@ -29,9 +27,6 @@ final class ProcessBatchHandler implements MessageHandlerInterface
         $this->barcodeChecker = $barcodeChecker;
     }
 
-    /**
-     * @throws StringsException
-     */
     public function __invoke(ProcessBatch $message): void
     {
         $queryRebuilder = new QueryRebuilder($this->managerRegistry);
@@ -50,9 +45,6 @@ final class ProcessBatchHandler implements MessageHandlerInterface
         $manager->flush();
     }
 
-    /**
-     * @throws StringsException
-     */
     private function getManager(string $class): EntityManagerInterface
     {
         /** @var EntityManagerInterface|null $manager */

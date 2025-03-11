@@ -6,7 +6,6 @@ namespace Loevgaard\SyliusBarcodePlugin\Validator;
 
 use InvalidArgumentException;
 use Loevgaard\SyliusBarcodePlugin\Validator\Constraint\Barcode;
-use function Safe\sprintf;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use violuke\Barcodes\BarcodeValidator as ActualBarcodeValidator;

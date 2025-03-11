@@ -13,6 +13,11 @@ final class LoevgaardSyliusBarcodeExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
+        /**
+         * @psalm-suppress PossiblyNullArgument
+         *
+         * @var array{form: array{require: bool, require_valid: bool, require_unique: bool}} $config
+         */
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
         $container->setParameter('loevgaard_sylius_barcode.form.require', $config['form']['require']);
         $container->setParameter('loevgaard_sylius_barcode.form.require_valid', $config['form']['require_valid']);

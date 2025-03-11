@@ -20,7 +20,7 @@ final class ProductContext implements Context
 
     public function __construct(
         ObjectManager $objectManager,
-        ProductVariantResolverInterface $defaultVariantResolver
+        ProductVariantResolverInterface $defaultVariantResolver,
     ) {
         $this->objectManager = $objectManager;
         $this->defaultVariantResolver = $defaultVariantResolver;

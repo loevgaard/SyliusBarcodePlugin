@@ -31,7 +31,7 @@ class CheckBarcodesCommand extends Command
         EntityManagerInterface $productVariantManager,
         MessageBusInterface $commandBus,
         BatcherFactoryInterface $batcherFactory,
-        string $productVariantClass
+        string $productVariantClass,
     ) {
         parent::__construct();
 
